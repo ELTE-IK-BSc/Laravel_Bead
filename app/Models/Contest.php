@@ -18,7 +18,6 @@ class Contest extends Model
     protected $fillable = [
         'win',
         'history',
-        'user_id',
     ];
 
     /**
@@ -29,8 +28,7 @@ class Contest extends Model
     protected function casts(): array
     {
         return [
-            'win' => 'boolean',
-            'user_id' => 'integer',
+            'win' => 'boolean'
         ];
     }
 
