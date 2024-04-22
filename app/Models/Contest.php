@@ -18,6 +18,7 @@ class Contest extends Model
     protected $fillable = [
         'win',
         'history',
+        'user_id',
     ];
 
     /**
@@ -29,6 +30,7 @@ class Contest extends Model
     {
         return [
             'win' => 'boolean',
+            'user_id' => 'integer',
         ];
     }
 
@@ -44,6 +46,6 @@ class Contest extends Model
 
     public function characters(): belongsToMany
     {
-        return $this->belongsToMany(Character::class)->withPivot(Character_Contest::class);
+        return $this->belongsToMany(Character::class);
     }
 }

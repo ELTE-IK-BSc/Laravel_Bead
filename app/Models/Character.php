@@ -22,6 +22,7 @@ class Character extends Model
         'strength',
         'accuracy',
         'magic',
+        'user_id',
     ];
 
     /**
@@ -37,7 +38,7 @@ class Character extends Model
             'strength' => 'integer',
             'accuracy' => 'integer',
             'magic' => 'integer',
-
+            'user_id' => 'integer',
         ];
     }
 
@@ -46,8 +47,10 @@ class Character extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function contests(): belongsToMany
+    public function contests(): BelongsToMany
     {
-        return $this->belongsToMany(Contest::class)->withPivot(Character_Contest::class);
+        return  $this->belongsToMany(Contest::class);
     }
+
+
 }
