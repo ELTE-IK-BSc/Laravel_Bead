@@ -1,6 +1,7 @@
 # Nyilatkozat
 
 Hallgató neve: Réthey-Prikkel Krisztián
+
 Hallgató Neptun kódja: RGCFPD
 
 Ezt a megoldást a fent nevezett hallgató küldte be és készítette a Szerveroldali webprogramozás tárgy Laravel beadandó számonkérésére.
@@ -25,6 +26,7 @@ ELTE Hallgatói Követelményrendszer, IK kari különös rész, 377/A. §: "Az 
 [ ] - Új helyszín létrehozása 2 pont
 [ ] - Helyszín módosítása 3 pont
 [ ] - Helyszín törlése 2 pont
+
 
 
 
