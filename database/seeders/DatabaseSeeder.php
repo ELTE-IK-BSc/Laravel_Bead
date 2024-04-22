@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Character;
+use App\Models\Contest;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Mail\Mailables\Content;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,6 +22,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin User',
             'email' => 'admin@example.com',
             'admin' => true,
+        ]);
+
+        $this->call([
+            PlaceSeeder::class,
+            CharacterSeeder::class,
+            ContestSeeder::class,
         ]);
     }
 }

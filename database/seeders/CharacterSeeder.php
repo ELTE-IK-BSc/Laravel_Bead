@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Character;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
 class CharacterSeeder extends Seeder
 {
@@ -12,6 +14,11 @@ class CharacterSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $users = User::all();
+
+        foreach ($users as $user) {
+            Character::factory(2)->for($user)->create();
+        }
+
     }
 }
