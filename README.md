@@ -1,6 +1,7 @@
 # Nyilatkozat
 
 Hallgató neve: Réthey-Prikkel Krisztián
+
 Hallgató Neptun kódja: RGCFPD
 
 Ezt a megoldást a fent nevezett hallgató küldte be és készítette a Szerveroldali webprogramozás tárgy Laravel beadandó számonkérésére.
