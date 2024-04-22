@@ -19,10 +19,11 @@ return new class extends Migration
             $table->integer('strength');
             $table->integer('accuracy');
             $table->integer('magic');
-            $table->timestamps();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->timestamps();
 
         });
     }
