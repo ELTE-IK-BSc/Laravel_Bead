@@ -18,7 +18,7 @@ class PlaceFactory extends Factory
     {
         $file = 'placeholder.png';
         return [
-            'name' => fake()->name(),
+            'name' => fake()->city(),
             'imagename' => $file,
             'imagename_hash' => $file,
         ];
