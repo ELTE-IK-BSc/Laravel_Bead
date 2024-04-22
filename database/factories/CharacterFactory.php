@@ -16,8 +16,17 @@ class CharacterFactory extends Factory
      */
     public function definition(): array
     {
+        $str = fake()->numberBetween(0, 20);
+        $acc = fake()->numberBetween(0, (20 - $str));
+        $mag = fake()->numberBetween(0, (20 - $acc - $str));
+
         return [
-            //
+            'name' => fake()->name(),
+            'enemy' => false,
+            'defence' => fake()->numberBetween(0, 3),
+            'strength' => $str,
+            'accuracy' => $acc,
+            'magic' => $mag,
         ];
     }
 }

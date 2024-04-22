@@ -16,8 +16,11 @@ class PlaceFactory extends Factory
      */
     public function definition(): array
     {
+        $file = 'placeholder.png';
         return [
-            //
+            'name' => fake()->name(),
+            'imagename' => $file,
+            'imagename_hash' => $file,
         ];
     }
 }
