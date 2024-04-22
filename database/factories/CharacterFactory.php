@@ -21,7 +21,7 @@ class CharacterFactory extends Factory
         $mag = fake()->numberBetween(0, (20 - $acc - $str));
 
         return [
-            'name' => fake()->name(),
+            'name' => fake()->firstName(),
             'enemy' => false,
             'defence' => fake()->numberBetween(0, 3),
             'strength' => $str,
