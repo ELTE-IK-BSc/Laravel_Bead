@@ -18,7 +18,11 @@ class CharacterSeeder extends Seeder
 
         foreach ($users as $user) {
             Character::factory(2)->for($user)->create();
+            if ($user->admin) {
+                Character::factory(10)->for($user)->create(['enemy' => true,]);
+            }
         }
+
 
     }
 }
