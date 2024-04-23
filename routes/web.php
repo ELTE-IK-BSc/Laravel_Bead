@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -7,7 +8,10 @@ Route::get('/', function () {
     return view('main');
 })->name('main');
 
-
+Route::middleware('auth')->group(function () {
+    Route::resource('characters', CharacterController::class);
+});
+Route::get('/characters/', [CharacterController::class, 'index'])->middleware(['auth', 'verified'])->name('characters');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -15,4 +19,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
