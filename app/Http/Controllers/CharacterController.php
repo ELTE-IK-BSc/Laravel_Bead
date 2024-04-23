@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class CharacterController extends Controller
 {
@@ -11,7 +13,8 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        //
+        $characters = Auth::user()->characters()->get();
+        return view('characters.characterList', ['characters' => $characters]);
     }
 
     /**
