@@ -46,4 +46,14 @@ class Contest extends Model
     {
         return $this->belongsToMany(Character::class);
     }
+
+    public function hero(): belongsToMany
+    {
+        return $this->belongsToMany(Character::class)->wherePivot('hero', 1);
+    }
+
+    public function enemy(): belongsToMany
+    {
+        return $this->belongsToMany(Character::class)->wherePivot('hero', 0);
+    }
 }
