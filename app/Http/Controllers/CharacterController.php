@@ -38,7 +38,11 @@ class CharacterController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $character = Auth::user()->characters()->where('characters.id', $id)->first();
+        if (!$character) {
+            abort(404);
+        }
+        return view('characters.characterDetails', ['character' => $character]);
     }
 
     /**
