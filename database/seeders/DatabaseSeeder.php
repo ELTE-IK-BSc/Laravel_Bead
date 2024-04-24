@@ -23,6 +23,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
             'admin' => true,
         ]);
+        User::factory()->create([
+            'name' => 'Base User',
+            'email' => 'q@q.hu',
+            'admin' => false,
+        ]);
 
         $this->call([
             PlaceSeeder::class,
