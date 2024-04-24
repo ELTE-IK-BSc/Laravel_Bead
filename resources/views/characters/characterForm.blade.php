@@ -34,8 +34,8 @@
             <div class="w-full">
                 <input type="number" placeholder="Védekezés"
                     class="input input-bordered text-gray-800 w-full @error('title') input-error @enderror"
-                    name="defence " id="defence " value="{{ old('defence ', $character->defence ?? '') }}" />
-                @error('defence ')
+                    name="defence" id="defence" value="{{ old('defence', $character->defence ?? '') }}" />
+                @error('defence')
                     <div class="label">
                         <span class="label-text-alt text-red-600">{{ $message }}</span>
                     </div>
@@ -54,7 +54,7 @@
             <div class="w-full">
                 <input type="number" placeholder="Pontosság"
                     class="input input-bordered text-gray-800 w-full @error('title') input-error @enderror"
-                    name="accuracy " id="accuracy" value="{{ old('accuracy', $character->accuracy ?? '') }}" />
+                    name="accuracy" id="accuracy" value="{{ old('accuracy', $character->accuracy ?? '') }}" />
                 @error('accuracy')
                     <div class="label">
                         <span class="label-text-alt text-red-600">{{ $message }}</span>
