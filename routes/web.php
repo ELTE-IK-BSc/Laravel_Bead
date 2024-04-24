@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\ContestController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,7 +11,9 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('characters', CharacterController::class);
+    Route::resource('contests', ContestController::class);
 });
+
 Route::get('/characters/', [CharacterController::class, 'index'])->middleware(['auth', 'verified'])->name('characters');
 
 Route::middleware('auth')->group(function () {
