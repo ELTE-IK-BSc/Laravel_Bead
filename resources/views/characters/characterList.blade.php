@@ -17,7 +17,7 @@
             <tbody class="text-center">
                 @foreach ($characters as $character)
                     <tr>
-                        <td>{{$character->name}}</td>
+                        <td><a href="{{ route('characters.show', ['character' => $character->id]) }}"">{{$character->name}}</a></td>
                         <td>{{$character->defence}}</td>
                         <td>{{$character->strength}}</td>
                         <td>{{$character->accuracy}}</td>
