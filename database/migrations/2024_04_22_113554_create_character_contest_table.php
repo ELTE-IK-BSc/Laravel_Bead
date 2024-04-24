@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->float('hero_hp')->default(20);
             $table->float('enemy_hp')->default(20);
+            $table->boolean('hero')->default(false);
 
             $table->unsignedBigInteger('character_id');
             $table->foreign('character_id')->references('id')->on('characters')->onDelete('cascade');
@@ -23,7 +24,6 @@ return new class extends Migration
             $table->foreign('contest_id')->references('id')->on('contests')->onDelete('cascade');
 
             $table->timestamps();
-
         });
     }
 
