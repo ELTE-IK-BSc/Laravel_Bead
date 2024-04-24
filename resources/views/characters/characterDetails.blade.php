@@ -44,18 +44,26 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
+                    {{ $hasAny = false }}
                     @foreach ($character->contests()->where('hero', '=', 1)->get() as $contest)
+                        {{ $hasAny = true }}
                         <tr>
                             <td>{{ $contest->place->name }}</td>
                             <td>{{ $contest->enemy->first()->name }}</td>
                         </tr>
                     @endforeach
                     @foreach ($character->contests()->where('hero', '=', 0)->get() as $contest)
+                        {{ $hasAny = true }}
                         <tr>
                             <td>{{ $contest->place->name }}</td>
                             <td>{{ $contest->hero->first()->name }}</td>
                         </tr>
                     @endforeach
+                    @if (!$hasAny)
+                        <tr>
+                            <td colspan="2">Nem volt még ütközete!</td>
+                        </tr>
+                    @endif
                 </tbody>
             </table>
         </div>
