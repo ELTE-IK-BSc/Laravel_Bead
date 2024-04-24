@@ -32,7 +32,7 @@
                 @enderror
             </div>
             <div class="w-full">
-                <input type="text" placeholder="Védekezés"
+                <input type="number" placeholder="Védekezés"
                     class="input input-bordered text-gray-800 w-full @error('title') input-error @enderror"
                     name="defence " id="defence " value="{{ old('defence ', $character->defence ?? '') }}" />
                 @error('defence ')
@@ -42,7 +42,7 @@
                 @enderror
             </div>
             <div class="w-full">
-                <input type="text" placeholder="Támadás"
+                <input type="number" placeholder="Támadás"
                     class="input input-bordered text-gray-800 w-full @error('title') input-error @enderror"
                     name="strength" id="strength" value="{{ old('strength', $character->strength ?? '') }}" />
                 @error('strength')
@@ -52,7 +52,7 @@
                 @enderror
             </div>
             <div class="w-full">
-                <input type="text" placeholder="Pontosság"
+                <input type="number" placeholder="Pontosság"
                     class="input input-bordered text-gray-800 w-full @error('title') input-error @enderror"
                     name="accuracy " id="accuracy" value="{{ old('accuracy', $character->accuracy ?? '') }}" />
                 @error('accuracy')
@@ -62,7 +62,7 @@
                 @enderror
             </div>
             <div class="w-full">
-                <input type="text" placeholder="Mágikusság"
+                <input type="number" placeholder="Mágikusság"
                     class="input input-bordered text-gray-800 w-full @error('title') input-error @enderror"
                     name="magic" id="magic" value="{{ old('magic', $character->magic ?? '') }}" />
                 @error('magic')
