@@ -17,15 +17,19 @@ class ContestSeeder extends Seeder
     public function run(): void
     {
         $places = Place::all();
-        $users = User::all();
+        $characters = Character::all();
 
-        foreach ($users as $user) {
-            $tmpPlace = $places->random(1)[0];
-            $tmpCharacter = $user->characters->random(1)[0];
+        foreach ($characters as $tmpCharacter) {
+            if (!$tmpCharacter->enemy) {
+                foreach ($places->random(2) as $tmpPlace) {
+                    $tmpEnemy = Character::all()->where('enemy', '=', 1)->random(2)->first();
 
-            Contest::factory(2)->for($tmpPlace)
-                ->hasAttached($tmpCharacter)
-                ->create(['user_id' => $user->id]);
+                    Contest::factory()
+                        ->hasAttached($tmpCharacter, ['hero' => true])
+                        ->hasAttached($tmpEnemy, ['hero' => false])
+                        ->create(['user_id' => $tmpCharacter->user_id, 'place_id' => $tmpPlace->id]);
+                }
+            }
         }
     }
 }
