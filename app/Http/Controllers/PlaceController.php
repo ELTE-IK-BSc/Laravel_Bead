@@ -39,8 +39,8 @@ class PlaceController extends Controller
 
         $place = Place::create([
             'name' => $validated['name'],
-            'imagename_hash' => $imagename,
             'imagename' => $request->file('file')->getClientOriginalName(),
+            'imagename_hash' => $imagename,
         ]);
 
         return redirect()->route('places.index');
@@ -59,7 +59,12 @@ class PlaceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $place = Place::all()->where('id', $id)->first();
+        if (!$place) {
+            abort(404);
+        }
+
+        return view('places.placeForm', ['place' => $place]);
     }
 
     /**
@@ -67,7 +72,32 @@ class PlaceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'file' => 'nullable|file|image',
+        ]);
+
+        $place = Place::all()->where('id', $id)->first();
+        if (!$place) {
+            abort(404);
+        }
+
+        if ($request->hasFile('file')) {
+            $imagename = $request->file('file')->store();
+            $place->update([
+                'name' => $validated['name'],
+                'imagename' => $request->file('file')->getClientOriginalName(),
+                'imagename_hash' => $imagename,
+            ]);
+        } else {
+            $place->update([
+                'name' => $validated['name'],
+                'imagename' => $place->imagename,
+                'imagename_hash' => $place->imagename_hash,
+            ]);
+        }
+
+        return redirect()->route('places.index');
     }
 
     /**
