@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Place;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PlaceController extends Controller
 {
@@ -105,6 +106,14 @@ class PlaceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $place = Place::all()->where('id', $id)->first();
+        if (!$place) {
+            abort(404);
+        }
+        $path = "/storage/app/" . $place->imagename_hash;
+        Storage::delete($path);
+        $place->delete();
+
+        return redirect()->route('places.index');
     }
 }
