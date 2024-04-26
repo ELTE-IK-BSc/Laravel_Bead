@@ -136,6 +136,14 @@ class CharacterController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $character = Auth::user()->characters()->where('characters.id', $id)->first();
+        if (!$character) {
+            abort(404);
+        }
+
+        $character->delete();
+
+        return redirect()->route('characters');
     }
 }
