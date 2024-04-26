@@ -13,7 +13,9 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::resource('characters', CharacterController::class);
     Route::resource('contests', ContestController::class);
-    Route::resource('places', PlaceController::class);
+    Route::middleware('\App\Http\Middleware\IsAdmin')->group(function () {
+        Route::resource('places', PlaceController::class);
+    });
 });
 
 Route::get('/characters/', [CharacterController::class, 'index'])->middleware(['auth', 'verified'])->name('characters');
