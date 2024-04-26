@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Character;
 
 
 class CharacterController extends Controller
@@ -30,7 +32,37 @@ class CharacterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' => 'required|string',
+                'enemy' => 'nullable|boolean',
+                'defence' => 'required|integer|min:0|max:3',
+                'strength' => 'required|integer|min:0|max:20',
+                'accuracy' => 'required|integer|min:0|max:20',
+                'magic' => 'required|integer|min:0|max:20',
+            ]
+        );
+
+        $validator->after(function ($validator) use ($request) {
+            $total = $request->defence + $request->strength + $request->accuracy + $request->magic;
+            if ($total > 20) {
+                $validator->errors()->add('defence', 'The sum of defence, strength, accuracy, and magic attributes must not greater than 20.');
+                $validator->errors()->add('strength', 'The sum of defence, strength, accuracy, and magic attributes must not greater than 20.');
+                $validator->errors()->add('accuracy', 'The sum of defence, strength, accuracy, and magic attributes must not greater than 20.');
+                $validator->errors()->add('magic', 'The sum of defence, strength, accuracy, and magic attributes must not greater than 20.');
+            }
+        });
+
+        if ($validator->fails()) {
+
+            return back()->withErrors($validator)->withInput();
+        }
+        $data = $validator->valid();
+        $data['user_id'] = Auth::id();
+        $character = Character::create($data);
+        return redirect()->route('characters.show', ['character' => $character->id]);
     }
 
     /**
