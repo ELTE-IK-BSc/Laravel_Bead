@@ -13,39 +13,34 @@
         <table class="table table-pin-rows max-w-fit">
             <thead class="text-center">
                 <tr>
-                    <th colspan="2">Karakter Adatok</th>
+                    <th colspan="2"> {{ $character->name }}</th>
                 </tr>
             </thead>
             <tbody class="text-center">
+
                 <tr>
-                    <th>Név</th>
-                    <td>
-                        {{ $character->name }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>Védekező képességpont</th>
+                    <th>Védekezés</th>
                     <td>
                         {{ $character->defence }}
                         <i class="fa-solid fa-shield-halved"></i>
                     </td>
                 </tr>
                 <tr>
-                    <th>Pontosság képességpont</th>
-                    <td>
-                        {{ $character->accuracy }}
-                        <i class="fa-solid fa-crosshairs"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Támadó képességpont</th>
+                    <th>Támadás</th>
                     <td>
                         {{ $character->strength }}
                         <i class="fa-solid fa-hand-fist"></i>
                     </td>
                 </tr>
                 <tr>
-                    <th>Mágikus képességpont</th>
+                    <th>Pontosság</th>
+                    <td>
+                        {{ $character->accuracy }}
+                        <i class="fa-solid fa-crosshairs"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Mágikusság</th>
                     <td>
                         {{ $character->magic }}
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -93,7 +88,7 @@
                     @endforeach
                     @if (!$hasAny)
                         <tr>
-                            <td colspan="2">Nem volt még ütközete!</td>
+                            <td colspan="3">Nem volt még ütközete!</td>
                         </tr>
                     @endif
                 </tbody>
