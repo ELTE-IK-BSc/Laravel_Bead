@@ -82,7 +82,11 @@ class CharacterController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $character = Auth::user()->characters()->where('characters.id', $id)->first();
+        if (!$character) {
+            abort(404);
+        }
+        return view('characters.characterForm', ['character' => $character]);
     }
 
     /**
@@ -90,7 +94,41 @@ class CharacterController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' => 'required|string',
+                'enemy' => 'nullable|boolean',
+                'defence' => 'required|integer|min:0|max:3',
+                'strength' => 'required|integer|min:0|max:20',
+                'accuracy' => 'required|integer|min:0|max:20',
+                'magic' => 'required|integer|min:0|max:20',
+            ]
+        );
+
+        $validator->after(function ($validator) use ($request) {
+            $total = $request->defence + $request->strength + $request->accuracy + $request->magic;
+            if ($total > 20) {
+                $validator->errors()->add('defence', 'The sum of defence, strength, accuracy, and magic attributes must not greater than 20.');
+                $validator->errors()->add('strength', 'The sum of defence, strength, accuracy, and magic attributes must not greater than 20.');
+                $validator->errors()->add('accuracy', 'The sum of defence, strength, accuracy, and magic attributes must not greater than 20.');
+                $validator->errors()->add('magic', 'The sum of defence, strength, accuracy, and magic attributes must not greater than 20.');
+            }
+        });
+
+        if ($validator->fails()) {
+
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $character = Auth::user()->characters()->where('characters.id', $id)->first();
+        if (!$character) {
+            abort(404);
+        }
+
+        $character->update($validator->valid());
+
+        return redirect()->route('characters.show', ['character' => $character->id]);
     }
 
     /**
