@@ -17,9 +17,9 @@ ELTE Hallgatói Követelményrendszer, IK kari különös rész, 377/A. §: "Az 
 [X] - Főoldal 2 pont
 [X] - Karakterek listázása oldal 2 pont
 [X] - Karakter részletes adatai tartalmazó oldal 2 pont
-[ ] - Új karakter létrehozása 6 pont
-[ ] - Karakter módosítása 4 pont
-[ ] - Karakter törlése 2 pont
+[X] - Új karakter létrehozása 6 pont
+[X] - Karakter módosítása 4 pont
+[X] - Karakter törlése 2 pont
 [ ] - Új mérkőzés létrehozása 3 pont
 [ ] - Mérkőzés oldal 10 pont
 [ ] - Helyszínek listázása oldal 2 pont
