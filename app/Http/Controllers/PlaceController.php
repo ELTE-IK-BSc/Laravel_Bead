@@ -21,7 +21,7 @@ class PlaceController extends Controller
      */
     public function create()
     {
-        //
+        return view('places.placeForm');
     }
 
     /**
@@ -29,7 +29,21 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'file' => 'required|file|image',
+        ]);
+
+
+        $imagename = $request->file('file')->store();
+
+        $place = Place::create([
+            'name' => $validated['name'],
+            'imagename_hash' => $imagename,
+            'imagename' => $request->file('file')->getClientOriginalName(),
+        ]);
+
+        return redirect()->route('places.index');
     }
 
     /**
