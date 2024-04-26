@@ -22,6 +22,7 @@ class Character extends Model
         'strength',
         'accuracy',
         'magic',
+        'user_id',
     ];
 
     /**
@@ -37,6 +38,7 @@ class Character extends Model
             'strength' => 'integer',
             'accuracy' => 'integer',
             'magic' => 'integer',
+            'user_id' => 'integer',
         ];
     }
 
