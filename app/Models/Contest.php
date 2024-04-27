@@ -49,11 +49,11 @@ class Contest extends Model
 
     public function hero(): belongsToMany
     {
-        return $this->belongsToMany(Character::class)->wherePivot('hero', 1);
+        return $this->belongsToMany(Character::class)->wherePivot('hero', 1)->withPivot('hero_hp');
     }
 
     public function enemy(): belongsToMany
     {
-        return $this->belongsToMany(Character::class)->wherePivot('hero', 0);
+        return $this->belongsToMany(Character::class)->wherePivot('hero', 0)->withPivot('enemy_hp');
     }
 }
