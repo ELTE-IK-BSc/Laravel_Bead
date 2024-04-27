@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('contests', function (Blueprint $table) {
             $table->id();
-            $table->boolean('win');
+            $table->boolean('win')->unsigned()->nullable();
             $table->string('history');
 
             $table->unsignedBigInteger('user_id');
@@ -21,7 +21,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('place_id');
             $table->foreign('place_id')->references('id')->on('places')->onDelete('cascade');
-            
+
             $table->timestamps();
 
         });
