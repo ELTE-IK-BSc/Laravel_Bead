@@ -127,7 +127,7 @@
     <header class="max-w-full bg-white dark:bg-gray-700 shadow">
         <div class="max-w-full mx-auto py-6 px-4 sm:px-6 lg:px-8 flex ">
             <p>@yield('header')</p>
-            <ul class="ml-3 flex place-self-end gap-2 even:relative odd:relative">
+            <ul class="ml-3 flex place-self-end gap-2 even:relative odd:relative ">
                 @yield('submenuitems')
             </ul>
         </div>
