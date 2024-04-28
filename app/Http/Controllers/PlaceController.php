@@ -36,7 +36,7 @@ class PlaceController extends Controller
         ]);
 
 
-        $imagename = $request->file('file')->store();
+        $imagename = $request->file('file')->store('/public/');
 
         $place = Place::create([
             'name' => $validated['name'],
