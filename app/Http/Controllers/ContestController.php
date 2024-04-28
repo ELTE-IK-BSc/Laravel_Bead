@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Character;
+use App\Models\Place;
+use App\Models\Contest;
+use Laravel\Prompts\Table;
 
 class ContestController extends Controller
 {
@@ -29,7 +32,17 @@ class ContestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $characterid = $request['charid'];
+        $character = Auth::user()->characters()->where('characters.id', $characterid)->first();
+        $place = Place::all()->random(1)->first();
+        $enemy = Character::all()->where('enemy', '=', 1)->random(1)->first();
+
+        $newContest = Contest::create(['win' => null, 'history' => '']);
+        $newContest->user->attach(Auth::user(), ['user_id' => Auth::user()->id]);
+        $newContest->characters->attach($character, ['hero' => true]);
+        $newContest->characters->attach($enemy, ['hero' => false]);
+
+        return redirect()->route('contests.show', ['contest' => $newContest->id]);
     }
 
     /**
@@ -41,7 +54,9 @@ class ContestController extends Controller
         if (!$contest) {
             abort(404);
         }
-        return view('constests.contest', ['contest' => $contest]);
+        $character = $contest->hero->first();
+        $enemy = $contest->enemy->first();
+        return view('constests.contest', ['contest' => $contest, 'character' => $character, 'enemy' => $enemy]);
     }
 
     /**
@@ -66,5 +81,9 @@ class ContestController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function attack(string $id, string $attackType)
+    {
     }
 }
