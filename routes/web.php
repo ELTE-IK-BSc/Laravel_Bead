@@ -4,6 +4,7 @@ use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\ContestController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Contest;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,6 +14,7 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::resource('characters', CharacterController::class);
     Route::resource('contests', ContestController::class);
+    Route::get('/contest/{id}/{attacktype}', [ContestController::class, 'attack'])->name('contest.attack');
     Route::middleware('\App\Http\Middleware\IsAdmin')->group(function () {
         Route::resource('places', PlaceController::class);
     });
