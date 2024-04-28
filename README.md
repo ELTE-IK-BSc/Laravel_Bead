@@ -20,8 +20,8 @@ ELTE Hallgatói Követelményrendszer, IK kari különös rész, 377/A. §: "Az 
 [X] - Új karakter létrehozása 6 pont
 [X] - Karakter módosítása 4 pont
 [X] - Karakter törlése 2 pont
-[ ] - Új mérkőzés létrehozása 3 pont
-[ ] - Mérkőzés oldal 10 pont
+[X] - Új mérkőzés létrehozása 3 pont
+[X] - Mérkőzés oldal 10 pont
 [X] - Helyszínek listázása oldal 2 pont
 [X] - Új helyszín létrehozása 2 pont
 [X] - Helyszín módosítása 3 pont
