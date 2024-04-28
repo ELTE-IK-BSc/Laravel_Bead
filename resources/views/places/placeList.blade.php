@@ -26,7 +26,9 @@
             @foreach ($places as $place)
                 <tr>
                     <td>{{ $place->name }}</td>
-                    <td>{{ $place->imagename }}</td>
+                    <td>
+                        <img src="{{ '/storage/app/public/' . $place->imagename_hash }}" alt="{{ $place->imagename }}" />
+                    </td>
                     <td class="w-fit">
                         <a href="{{ route('places.edit', ['place' => $place->id]) }}"
                             class="hover:after:content-['Szerkeztés'] after:absolute  after:right-16 hover:after:p-1 after:z-10 after:bg-slate-600 after:text-gray-50 after:w-fit btn hover:bg-slate-100 hover:text-gray-800 hover:rounded dark:text-gray-200 dark:hover:bg-slate-300 dark:hover:text-gray-600 ">
