@@ -36,13 +36,11 @@ class ContestController extends Controller
         $character = Auth::user()->characters()->where('characters.id', $characterid)->first();
         $place = Place::all()->random(1)->first();
         $enemy = Character::all()->where('enemy', '=', 1)->random(1)->first();
+        $contest = Contest::factory()->create(['win' => null,'history' => '', 'user_id' => Auth::user()->id, 'place_id' => $place->id]);
+        $contest->characters()->attach($character, ['hero' => true]);
+        $contest->characters()->attach($enemy, ['hero' => false]);
 
-        $newContest = Contest::create(['win' => null, 'history' => '']);
-        $newContest->user->attach(Auth::user(), ['user_id' => Auth::user()->id]);
-        $newContest->characters->attach($character, ['hero' => true]);
-        $newContest->characters->attach($enemy, ['hero' => false]);
-
-        return redirect()->route('contests.show', ['contest' => $newContest->id]);
+        return redirect()->route('contests.show', ['contest' => $contest->id]);
     }
 
     /**
