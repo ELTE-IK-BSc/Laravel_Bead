@@ -11,6 +11,8 @@ require_once 'vendor/autoload.php';
  */
 class PlaceFactory extends Factory
 {
+    private $array = [1, 2, 3];
+
     /**
      * Define the model's default state.
      *
@@ -18,11 +20,12 @@ class PlaceFactory extends Factory
      */
     public function definition(): array
     {
-        $num = fake()->numberBetween(1, 3);
-        $imagename = "RandomCity".$num.".jpg";
-
-        $image = fake()->image(null, 360, 360, 'animals', true, true, 'cats', true, 'jpg');
-
+        $a = $this->array;
+        $num = fake()->randomElement($this->array);
+        $this->array = array_filter($this->array, function ($element) use ($num) {
+            return $element !== $num;
+        });
+        $imagename = "DefaultRandomPlace" . $num . ".jpg";
         return [
             'name' => fake()->city(),
             'imagename' => $imagename,
