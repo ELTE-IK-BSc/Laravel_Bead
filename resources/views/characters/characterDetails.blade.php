@@ -98,7 +98,7 @@
                     <input hidden type="text" name="charid" id="charid" value="{{ $character->id }}">
                     <button
                         class="hover:after:content-['Új_mérkőzés'] after:absolute  after:right-16 hover:after:p-1 after:z-10 after:bg-slate-600 after:text-gray-50 after:w-fit btn hover:bg-slate-100 hover:text-gray-800 hover:rounded dark:text-gray-200 dark:hover:bg-slate-300 dark:hover:text-gray-600 ">
-                        <i class="fa-solid fa-compass fa-fw fa-xl"></i>
+                        <i class="fa-solid fa-gamepad fa-fw fa-xl"></i>
                     </button>
                 </form>
             </li>
