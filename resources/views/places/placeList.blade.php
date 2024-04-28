@@ -26,8 +26,8 @@
             @foreach ($places as $place)
                 <tr>
                     <td>{{ $place->name }}</td>
-                    <td>
-                        <img src="{{ '/storage/app/public/' . $place->imagename_hash }}" alt="{{ $place->imagename }}" />
+                    <td class="flex justify-center">
+                        <img class="size-20" src="{{ Storage::url($place->imagename_hash) }}" alt="{{ $place->imagename }}" />
                     </td>
                     <td class="w-fit">
                         <a href="{{ route('places.edit', ['place' => $place->id]) }}"
