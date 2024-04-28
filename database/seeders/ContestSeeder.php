@@ -24,10 +24,20 @@ class ContestSeeder extends Seeder
                 foreach ($places->random(2) as $tmpPlace) {
                     $tmpEnemy = Character::all()->where('enemy', '=', 1)->random(2)->first();
 
-                    Contest::factory()
-                        ->hasAttached($tmpCharacter, ['hero' => true])
-                        ->hasAttached($tmpEnemy, ['hero' => false])
+                    $contest = Contest::factory()
                         ->create(['user_id' => $tmpCharacter->user_id, 'place_id' => $tmpPlace->id]);
+                    $lifeleft = fake()->numberBetween(1, 20);
+                    if ($contest->win) {
+                        $contest->characters()
+                            ->attach($tmpCharacter, ['hero' => true, 'hero_hp' => $lifeleft, 'enemy_hp' => 0]);
+                        $contest->characters()
+                            ->attach($tmpEnemy, ['hero' => false, 'hero_hp' => $lifeleft, 'enemy_hp' => 0]);
+                    } else {
+                        $contest->characters()
+                            ->attach($tmpCharacter, ['hero' => true, 'hero_hp' => 0, 'enemy_hp' => $lifeleft]);
+                        $contest->characters()
+                            ->attach($tmpEnemy, ['hero' => false, 'hero_hp' => 0, 'enemy_hp' => $lifeleft]);
+                    }
                 }
             }
         }
