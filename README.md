@@ -11,7 +11,7 @@ Kijelentem, hogy ez a megoldás a saját munkám. Nem másoltam vagy használtam
 ELTE Hallgatói Követelményrendszer, IK kari különös rész, 377/A. §: "Az a hallgató, aki olyan tanulmányi teljesítménymérés (vizsga, zárthelyi, beadandó feladat) során, amelynek keretében számítógépes program vagy programmodul elkészítése a feladat, az oktató által meghatározottakon kívül más segédeszközt vesz igénybe, illetve más hallgatónak meg nem engedett segítséget nyújt, tanulmányi szabálytalanságot követ el, ezért az adott félévben a tantárgyat nem teljesítheti és a tantárgy kreditjét nem szerezheti meg."
 
 ## Checklist
-
+```txt
 [X] - Adatbázis és modellek 3 pont
 [X] - Seeder 3 pont
 [X] - Főoldal 2 pont
@@ -27,6 +27,7 @@ ELTE Hallgatói Követelményrendszer, IK kari különös rész, 377/A. §: "Az 
 [X] - Helyszín módosítása 3 pont
 [X] - Helyszín törlése 2 pont
 
+```
 
 
 
